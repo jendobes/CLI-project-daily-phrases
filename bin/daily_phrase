@@ -1,6 +1,4 @@
 #!/usr/bin/env ruby
 require "./lib/daily_phrase"
 
-test = DailyPhrase::CLI.new
-test.call
-test.list_phrases
+DailyPhrase::CLI.new.call
