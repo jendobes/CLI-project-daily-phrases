@@ -1,5 +1,7 @@
+#!/usr/bin/env ruby
+require 'pry'
 
-class DailyPhrase::CLI
+class CLI
 
   def call
     puts "***Welcome to globoyak's Daily Language Phrases!!!***"
@@ -31,34 +33,31 @@ class DailyPhrase::CLI
     input = gets.strip.downcase
     if input == "yes"
       menu
-    elsif input == "no"
+    else
       puts "Thanks for visiting us! Come back tomorrow for more phrases :)"
-    else puts "Please type 'yes' or 'no'"
-      #make loop
     end
   end
 
   def list
-    lang_greetings.each{|key, value| puts key}
-    # puts <<-DOC.gsub /^\s+/, ""
-    # You can learn daily phrases in 15 languages; check 'em out below!
-    # French
-    # German
-    # Spanish
-    # Italian
-    # Swedish
-    # Portugese
-    # Dutch
-    # Norwegian
-    # Polish
-    # Chinese
-    # Arabic
-    # Hindi
-    # Russian
-    # Korean
-    # Japenese
-    # DOC
-    sleep(1.5)
+    puts <<-DOC.gsub /^\s+/, ""
+    You can learn daily phrases in 15 languages; check 'em out below!
+    French
+    German
+    Spanish
+    Italian
+    Swedish
+    Portugese
+    Dutch
+    Norwegian
+    Polish
+    Chinese
+    Arabic
+    Hindi
+    Russian
+    Korean
+    Japenese
+    DOC
+    sleep(3)
     menu
   end
 
@@ -107,3 +106,4 @@ class DailyPhrase::CLI
   end
 
 end
+binding.pry
