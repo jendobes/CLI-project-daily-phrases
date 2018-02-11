@@ -40,24 +40,6 @@ class DailyPhrase::CLI
 
   def list
     lang_greetings.each{|key, value| puts key}
-    # puts <<-DOC.gsub /^\s+/, ""
-    # You can learn daily phrases in 15 languages; check 'em out below!
-    # French
-    # German
-    # Spanish
-    # Italian
-    # Swedish
-    # Portugese
-    # Dutch
-    # Norwegian
-    # Polish
-    # Chinese
-    # Arabic
-    # Hindi
-    # Russian
-    # Korean
-    # Japenese
-    # DOC
     sleep(1.5)
     menu
   end
@@ -66,21 +48,20 @@ class DailyPhrase::CLI
     greetings = {
       :French => "Bonjour!",
       :German =>  "Hallo!",
-      :Spanish => "Hola!",
+      :Spanish => "¡Hola!",
       :Italian => "Ciao!",
-      :Swedish => "Hej!",
-      :Portugese => "Hello!",
-      :Dutch => "Hello!",
-      :Norwegian => "Hello!",
-      :Polish => "Hello!",
-      :Chinese => "Hello!",
-      :Arabic => "Hello!",
-      :Hindi => "Hello!",
-      :Russian => "Hello!",
-      :Korean => "Hello!",
-      :Japenese => "Hello!",
+      :Swedish => "Hallå!",
+      :Portugese => "Olá!",
+      :Dutch => "Hallo!",
+      :Norwegian => "Hallo!",
+      :Polish => "Witaj!",
+      :Chinese => "你好 (Nǐ hǎo)!",
+      :Arabic => "مرحبا (marhba)!",
+      :Hindi => "नमस्कार (namaskaar)!",
+      :Russian => "Здравствуйте (Zdravstvuyte)!",
+      :Korean => "여보세요 (yeoboseyo)!",
+      :Japenese => "こんにちは (Kon'nichiwa)!",
     }
-
   end
 
   def menu #currently unable to handle multiple language input that is not separated by a comma
