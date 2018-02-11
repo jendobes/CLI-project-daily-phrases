@@ -4,17 +4,7 @@ class DailyPhrase::CLI
   def call
     puts "***Welcome to globoyak's Daily Language Phrases!!!***"
     menu
-    # list_phrases
-
   end
-
-  # def list_phrases
-  #   puts <<-DOC.gsub /^\s+/, ""
-  #   [language greeting]! Let's see what people are saying in (languages) today:
-  #   (lists phrases)
-  #   DOC
-
-  # end
 
   def greeting
     puts "Please type in the languages for which you would like to see phrases."
@@ -34,7 +24,7 @@ class DailyPhrase::CLI
     elsif input == "no"
       puts "Thanks for visiting us! Come back tomorrow for more phrases :)"
     else puts "Please type 'yes' or 'no'"
-      #make loop
+      continue
     end
   end
 
