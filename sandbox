@@ -1,109 +1,43 @@
 #!/usr/bin/env ruby
-# require 'pry'
-#
-# class CLI
-#
-#   def call
-#     puts "***Welcome to globoyak's Daily Language Phrases!!!***"
-#     menu
-#     # list_phrases
-#
-#   end
-#
-#   # def list_phrases
-#   #   puts <<-DOC.gsub /^\s+/, ""
-#   #   [language greeting]! Let's see what people are saying in (languages) today:
-#   #   (lists phrases)
-#   #   DOC
-#
-#   # end
-#
-#   def greeting
-#     puts "Please type in the languages for which you would like to see phrases."
-#     sleep(0.5)
-#     puts "~To see a complete list of available languages, type 'list'."
-#     sleep(1)
-#     puts "~If you would like to phrases in all 15 languages, type 'all'."
-#     sleep(1)
-#     puts "~To exit the program, type 'quit'."
-#   end
-#
-#   def continue
-#     puts "Would you like to see more phrases?"
-#     input = gets.strip.downcase
-#     if input == "yes"
-#       menu
-#     else
-#       puts "Thanks for visiting us! Come back tomorrow for more phrases :)"
-#     end
-#   end
-#
-#   def list
-#     puts <<-DOC.gsub /^\s+/, ""
-#     You can learn daily phrases in 15 languages; check 'em out below!
-#     French
-#     German
-#     Spanish
-#     Italian
-#     Swedish
-#     Portugese
-#     Dutch
-#     Norwegian
-#     Polish
-#     Chinese
-#     Arabic
-#     Hindi
-#     Russian
-#     Korean
-#     Japenese
-#     DOC
-#     sleep(3)
-#     menu
-#   end
-#
-#   def lang_greetings
-#     greetings = {
-#       :French => "Bonjour!",
-#       :German =>  "Hallo!",
-#       :Spanish => "Hola!",
-#       :Italian => "Ciao!",
-#       :Swedish => "Hej!",
-#       :Portugese => "Hello!",
-#       :Dutch => "Hello!",
-#       :Norwegian => "Hello!",
-#       :Polish => "Hello!",
-#       :Chinese => "Hello!",
-#       :Arabic => "Hello!",
-#       :Hindi => "Hello!",
-#       :Russian => "Hello!",
-#       :Korean => "Hello!",
-#       :Japenese => "Hello!",
-#     }
-#
-#   end
-#
-#   def menu #currently unable to handle multiple language input that is not separated by a comma
-#     greeting
-#     input = gets.strip
-#     array = input.split(", ")
-#
-#     if input == "all"
-#       puts "Here's what people around the world are saying today:"
-#       puts "All 15 language phrases"
-#     elsif input == "list"
-#       list
-#     elsif input == "quit"
-#       exit
-#     elsif array.length == 1
-#       puts "#{lang_greetings[input.capitalize.to_sym]} Let's see what people are saying in #{input.capitalize} today:"
-#       input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
-#     else
-#       new_array = array.collect{|language| language.capitalize}
-#       puts "#{lang_greetings[new_array.first.to_sym]} Let's see what people are saying in #{new_array[0...new_array.length-1].join(", ")} and #{new_array[new_array.length-1]} today:"
-#       input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
-#     end
-#     continue
-#   end
-#
-# end
-# binding.pry
+
+
+require "nokogiri"
+require "open-uri"
+require "pry"
+#class DailyPhrase:Phrases
+
+class Phrases
+attr_accessor :greetings
+
+  def self.scrape(url)
+    phrase_page = Nokogiri::HTML(open(url))
+
+  end
+
+  def initialize
+    @greetings = {
+      :French => {hello: "Bonjour!"},
+      :German => {hello:  "Hallo!"},
+      :Spanish => {hello: "¡Hola!"},
+      :Italian => {hello: "Ciao!"},
+      :Swedish => {hello: "Hallå!"},
+      :Portugese => {hello: "Olá!"},
+      :Dutch => {hello: "Hallo!"},
+      :Norwegian => {hello: "Hallo!"},
+      :Polish => {hello: "Witaj!"},
+      :Chinese => {hello: "你好 (Nǐ hǎo)!"},
+      :Arabic => {hello: "مرحبا (marhba)!"},
+      :Hindi => {hello: "नमस्कार (namaskaar)!"},
+      :Russian => {hello: "Здравствуйте (Zdravstvuyte)!"},
+      :Korean => {hello: "여보세요 (yeoboseyo)!"},
+      :Japenese => {hello: "こんにちは (Kon'nichiwa)!"}
+    }
+  end
+
+
+#:French => {hello: "Bonjour!", lang_phrase: "Je m'appelle Jennifer", eng_phrase: "my name is Jennifer"}
+
+
+
+end
+binding.pry

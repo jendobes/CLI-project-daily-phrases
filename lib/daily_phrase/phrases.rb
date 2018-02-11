@@ -1,32 +1,38 @@
 require "nokogiri"
 require "open-uri"
+require "pry"
+#class DailyPhrase:Phrases
 
-class DailyPhrase:Phrases
+class Phrases
 
   def self.scrape(url)
     phrase_page = Nokogiri::HTML(open(url))
 
   end
 
-  def lang_phrases
-    greetings = {
-      :French => {hello: "Bonjour!", phrase: },
-      :German => {hello:  "Hallo!", phrase: },
-      :Spanish => {hello: "¡Hola!", phrase: },
-      :Italian => {hello: "Ciao!", phrase: },
-      :Swedish => {hello: "Hallå!", phrase: },
-      :Portugese => {hello: "Olá!", phrase: },
-      :Dutch => {hello: "Hallo!", phrase: },
-      :Norwegian => {hello: "Hallo!", phrase: },
-      :Polish => {hello: "Witaj!", phrase: },
-      :Chinese => {hello: "你好 (Nǐ hǎo)!", phrase: },
-      :Arabic => {hello: "مرحبا (marhba)!", phrase: },
-      :Hindi => {hello: "नमस्कार (namaskaar)!", phrase: },
-      :Russian => {hello: "Здравствуйте (Zdravstvuyte)!", phrase: },
-      :Korean => {hello: "여보세요 (yeoboseyo)!", phrase: },
-      :Japenese => {hello: "こんにちは (Kon'nichiwa)!", phrase: },
-    }
+  def greetings
+    @greetings
   end
+
+#:French => {hello: "Bonjour!", lang_phrase: "Je m'appelle Jennifer", eng_phrase: "my name is Jennifer"}
+    @greetings = {
+      :French => {hello: "Bonjour!"},
+      :German => {hello:  "Hallo!"},
+      :Spanish => {hello: "¡Hola!"},
+      :Italian => {hello: "Ciao!"},
+      :Swedish => {hello: "Hallå!"},
+      :Portugese => {hello: "Olá!"},
+      :Dutch => {hello: "Hallo!"},
+      :Norwegian => {hello: "Hallo!"},
+      :Polish => {hello: "Witaj!"},
+      :Chinese => {hello: "你好 (Nǐ hǎo)!"},
+      :Arabic => {hello: "مرحبا (marhba)!"},
+      :Hindi => {hello: "नमस्कार (namaskaar)!"},
+      :Russian => {hello: "Здравствуйте (Zdravstvuyte)!"},
+      :Korean => {hello: "여보세요 (yeoboseyo)!"},
+      :Japenese => {hello: "こんにちは (Kon'nichiwa)!"}
+    }
 
 
 end
+binding.pry
