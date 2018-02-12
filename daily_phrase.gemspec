@@ -2,6 +2,9 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "daily_phrase/version"
+require "nokogiri"
+require "open-uri"
+require "pry"
 
 Gem::Specification.new do |spec|
   spec.name          = "daily_phrase"
@@ -11,7 +14,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Daily phrases in 15 foreign languages}
   spec.description   = %q{Outputs phrases in 15 foreign languages with the english translation}
-  spec.homepage      = "git@github.com:jendobes/cli-data-gem-assessment-v-000.git"
+  spec.homepage      = "https://github.com/jendobes/CLI-project-daily-phrases"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -31,4 +34,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "pry"
+  spec.add_dependency "nokogiri"
 end

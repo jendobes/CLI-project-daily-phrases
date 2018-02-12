@@ -1,4 +1,7 @@
 source "https://rubygems.org"
+require "nokogiri"
+require "open-uri"
+require "pry"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
