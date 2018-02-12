@@ -29,29 +29,9 @@ class DailyPhrase::CLI
   end
 
   def list
-    lang_greetings.each{|key, value| puts key}
+    DailyPhrase::Phrases.phrases.each{|key, value| puts key}
     sleep(1.5)
     menu
-  end
-
-  def lang_greetings
-    greetings = {
-      :French => "Bonjour!",
-      :German =>  "Hallo!",
-      :Spanish => "¡Hola!",
-      :Italian => "Ciao!",
-      :Swedish => "Hallå!",
-      :Portugese => "Olá!",
-      :Dutch => "Hallo!",
-      :Norwegian => "Hallo!",
-      :Polish => "Witaj!",
-      :Chinese => "你好 (Nǐ hǎo)!",
-      :Arabic => "مرحبا (marhba)!",
-      :Hindi => "नमस्कार (namaskaar)!",
-      :Russian => "Здравствуйте (Zdravstvuyte)!",
-      :Korean => "여보세요 (yeoboseyo)!",
-      :Japenese => "こんにちは (Kon'nichiwa)!",
-    }
   end
 
   def menu #currently unable to handle multiple language input that is not separated by a comma
