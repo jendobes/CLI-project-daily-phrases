@@ -1,4 +1,8 @@
+#!/usr/bin/env ruby
 require "./lib/daily_phrase.rb"
+require 'pry'
+require 'nokogiri'
+require 'open-uri'
 class DailyPhrase::Phrases
 #:French => {hello: "Bonjour!", lang_phrase: "Je m'appelle Jennifer", eng_phrase: "my name is Jennifer"}
 attr_accessor :phrases
@@ -27,9 +31,9 @@ attr_accessor :phrases
 
   def self.scraper(input)
     phrase_page = Nokogiri::HTML(open("https://www.transparent.com/word-of-the-day/today/#{input}.html"))
-
     # scrape lang_phrase
     # @@phrases[input.capitalize.to_sym][lang_phrase:] = scrape output
+    phrase_page.css
     #
     # scrape eng_phrase
     # @@phrases[input.capitalize.to_sym][eng_phrase:] = scrape output
@@ -39,3 +43,5 @@ attr_accessor :phrases
 
 
 end
+
+Phrases.scraper("italian")
