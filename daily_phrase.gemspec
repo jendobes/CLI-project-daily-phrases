@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'Jennifer Dobak'"]
   spec.email         = ["'jdobak1@gmail.com'"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Daily phrases in 15 foreign languages}
+  spec.description   = %q{Outputs phrases in 15 foreign languages with the english translation}
+  spec.homepage      = "git@github.com:jendobes/cli-data-gem-assessment-v-000.git"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
