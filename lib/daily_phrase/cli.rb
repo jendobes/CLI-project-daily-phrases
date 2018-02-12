@@ -47,11 +47,11 @@ class DailyPhrase::CLI
     elsif input == "quit"
       exit
     elsif array.length == 1
-      puts "#{lang_greetings[input.capitalize.to_sym]} Let's see what people are saying in #{input.capitalize} today:"
+      puts "#{DailyPhrase::Phrases.phrases[input.capitalize.to_sym][:hello]} Let's see what people are saying in #{input.capitalize} today:"
       input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
     else
       new_array = array.collect{|language| language.capitalize}
-      puts "#{lang_greetings[new_array.first.to_sym]} Let's see what people are saying in #{new_array[0...new_array.length-1].join(", ")} and #{new_array[new_array.length-1]} today:"
+      puts "#{DailyPhrase::Phrases.phrases[new_array.first.to_sym][:hello]} Let's see what people are saying in #{new_array[0...new_array.length-1].join(", ")} and #{new_array[new_array.length-1]} today:"
       input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
     end
     continue

@@ -28,6 +28,11 @@ attr_accessor :phrases
   def self.scraper(input)
     phrase_page = Nokogiri::HTML(open("https://www.transparent.com/word-of-the-day/today/#{input}.html"))
 
+    # scrape lang_phrase
+    # @@phrases[input.capitalize.to_sym][lang_phrase:] = scrape output
+    #
+    # scrape eng_phrase
+    # @@phrases[input.capitalize.to_sym][eng_phrase:] = scrape output
 
   end
 

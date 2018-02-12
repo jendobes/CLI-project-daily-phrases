@@ -1,6 +1,4 @@
 #!/usr/bin/env ruby
 require "./lib/daily_phrase"
 
-#DailyPhrase::CLI.new.call
-
-DailyPhrase::Phrases.phrases
+DailyPhrase::CLI.new.call

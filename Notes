@@ -1,0 +1,10 @@
+EACH LANGUAGE SHOULD BE ITS OWN INSTANCE OF A LANGUAGE class
+
+there shoudl not be this giant hash of languages
+
+if the language is not available then the CLI should inform the user
+
+
+DUH
+
+see student scraper lab for inspiration 
