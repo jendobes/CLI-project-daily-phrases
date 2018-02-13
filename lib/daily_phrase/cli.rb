@@ -45,14 +45,14 @@ class DailyPhrase::CLI
     preped_input
   end
 
-  def create_languages(input)
+def create_languages(input)
     array = input_prep(input).split(", ")
     array.each{|language| language = DailyPhrase::Language.new(language)}
     DailyPhrase::Language.all
-    # binding.pry
+    binding.pry
   end
 
-  def menu 
+  def menu
     greeting
     input = gets.strip
     create_languages(input)
