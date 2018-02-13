@@ -47,7 +47,8 @@ class DailyPhrase::CLI
     else
       create_languages(input)
       new_array = array.collect{|language| language.capitalize}
-      puts "#{DailyPhrase::Phrases.phrases[new_array.first.to_sym][:hello]} Let's see what people are saying in #{new_array[0...new_array.length-1].join(", ")} and #{new_array[new_array.length-1]} today:"
+      greetings = DailyPhrase::Language.all.collect{|language| print language.hello }
+      puts "#{greetings} Let's see what people are saying in #{new_array[0...new_array.length-1].join(", ")} and #{new_array[new_array.length-1]} today:"
     end
     puts "-----------------------"
     DailyPhrase::Language.all.each do |language|
