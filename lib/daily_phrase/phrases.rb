@@ -29,21 +29,15 @@ attr_accessor :phrases
     :Japenese => {hello: "こんにちは (Kon'nichiwa)!"}
   }
 
-  def self.scraper(input)
+  def self.scrape(input)
     doc = Nokogiri::HTML(open("https://www.transparent.com/word-of-the-day/today/#{input}.html"))
-    # # binding.pry
-    # # scrape lang_phrase
-    # lang_scrape = "Mi chiamo Jennifer" # scrape lang_phrase
-    # @@phrases[input.capitalize.to_sym][:lang_phrase] = lang_scrape
-    # # doc.css
-    # #
-    # eng_scrape = "My name is Jennifer" # scrape eng_phrase
-    # @@phrases[input.capitalize.to_sym][:eng_phrase] = eng_scrape
-    #
-    # puts "#{@@phrases[input.capitalize.to_sym][:lang_phrase]} is #{input.capitalize} for #{@@phrases[input.capitalize.to_sym][:eng_phrase]}"
-    current_language = DailyPhrase::Language.all.detect{|language| langage.name == input}
-    current_language.phrase = "phrase scraper"
-    current_language.translate = "translate scraper"
+    phrase_scrape = "I am the phrase"
+    translation_scrape = "I am the translation"
+    @@phrases[input.capitalize.to_sym][:phrase] = phrase_scrape
+    @@phrases[input.capitalize.to_sym][:translation] = translation_scrape
+    #current_language = DailyPhrase::Language.all.detect{|language| langage.name == input}
+    # current_language.phrase = "phrase scraper"
+    # current_language.translate = "translate scraper"
   end
 
 

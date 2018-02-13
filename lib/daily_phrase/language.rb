@@ -1,11 +1,24 @@
 class DailyPhrase::Language
-attr_accessor :name, :greeting, :phrase, :translation
+attr_accessor :name, :hello, :phrase, :translation
 
   @@all = []
 
   def initialize(name = nil)
     @name = name
     @@all << self #unless @@all.collect{|language| language.name}.include?(name)
+  end
+
+  def self.add_attributes_to_languages
+      @@all.each do |language|
+      DailyPhrase::Phrases.scrape(language.name)
+      attributes = DailyPhrase::Phrases.phrases[:"#{language.name.capitalize}"]
+      language.add_phrases(attributes)
+    end
+
+  end
+
+  def add_phrases(phrases_hash)
+    phrases_hash.each {|key, value| self.send(("#{key}="), value)}
   end
 
   def self.all

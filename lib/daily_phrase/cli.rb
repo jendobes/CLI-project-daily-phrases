@@ -1,6 +1,65 @@
 
 class DailyPhrase::CLI
 
+  def list
+    DailyPhrase::Phrases.phrases.each{|key, value| puts key}
+    sleep(1.5)
+    menu
+  end
+
+  # def validate(input)
+  #   #validates that language is available
+  # array = input.split(", ")
+  # array.each{|language| DailyPhrase::Phrases.phrases.include?(language)}
+  # end
+
+  def input_prep(input)
+    input.include?(",") ? preped_input = input : preped_input = input.split(" ").join(", ")
+    preped_input
+  end
+
+  def create_languages(input)
+    # array = input_prep(input).split(", ")
+    array.each{|language| language = DailyPhrase::Language.new(language)}
+    DailyPhrase::Language.add_attributes_to_languages
+  end
+
+  def create_all_languages
+  end
+
+
+  def menu
+    greeting
+    input = gets.strip
+    array = input_prep(input).split(", ")
+
+    if input == "all"
+      puts "Here's what people around the world are saying today:"
+      puts "All 15 language phrases"
+      create_all_languages
+    elsif input == "list"
+      list
+    elsif input == "quit"
+      exit
+    elsif array.length == 1
+      create_languages(array)
+      puts "#{DailyPhrase::Phrases.phrases[input.capitalize.to_sym][:hello]} Let's see what people are saying in #{input.capitalize} today:"
+      # input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
+    else
+      create_languages(array)
+      new_array = array.collect{|language| language.name.capitalize}
+      puts "#{DailyPhrase::Phrases.phrases[new_array.first.to_sym][:hello]} Let's see what people are saying in #{new_array[0...new_array.length-1].join(", ")} and #{new_array[new_array.length-1]} today:"
+      # input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
+    end
+
+    DailyPhrase::Language.all.each do |language|
+      language.phrase
+      language.translation
+    end
+    DailyPhrase::Language.clear
+    continue
+  end
+
   def call
     puts "***Welcome to globoyak's Daily Language Phrases!!!***"
     menu
@@ -26,60 +85,6 @@ class DailyPhrase::CLI
     else puts "Please type 'yes' or 'no'"
       continue
     end
-  end
-
-  def list
-    DailyPhrase::Phrases.phrases.each{|key, value| puts key}
-    sleep(1.5)
-    menu
-  end
-
-  # def validate(input)
-  #   #validates that language is available
-  # array = input.split(", ")
-  # array.each{|language| DailyPhrase::Phrases.phrases.include?(language)}
-  # end
-
-  def input_prep(input)
-    input.include?(",") ? preped_input = input : preped_input = input.split(" ").join(", ")
-    preped_input
-  end
-
-def create_languages(input)
-    array = input_prep(input).split(", ")
-    array.each{|language| language = DailyPhrase::Language.new(language)}
-    DailyPhrase::Language.all
-    binding.pry
-  end
-
-  def menu
-    greeting
-    input = gets.strip
-    create_languages(input)
-
-    if input == "all"
-      puts "Here's what people around the world are saying today:"
-      puts "All 15 language phrases"
-      DailyPhrase::Phrases.phrases.each {|key, value| DailyPhrase::Phrases.scraper(key)}
-    elsif input == "list"
-      list
-    elsif input == "quit"
-      exit
-    elsif DailyPhrase::Language.all.length == 1
-      puts "#{DailyPhrase::Phrases.phrases[input.capitalize.to_sym][:hello]} Let's see what people are saying in #{input.capitalize} today:"
-      # input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
-    else
-      new_array = DailyPhrase::Language.all.collect{|language| language.name.capitalize}
-      puts "#{DailyPhrase::Phrases.phrases[new_array.first.to_sym][:hello]} Let's see what people are saying in #{new_array[0...new_array.length-1].join(", ")} and #{new_array[new_array.length-1]} today:"
-      # input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
-    end
-
-    DailyPhrase::Language.all.each do |language|
-      language.phrase
-      language.translation
-    end
-    DailyPhrase::Language.clear
-    continue
   end
 
 end
