@@ -11,8 +11,8 @@ attr_accessor :name, :hello, :phrase, :translation
   def self.add_attributes_to_languages
       @@all.each do |language|
       DailyPhrase::Phrases.scrape(language.name)
-      attributes = DailyPhrase::Phrases.phrases[:"#{language.name.capitalize}"]
-      language.add_phrases(attributes)
+      language_key = DailyPhrase::Phrases.phrases[:"#{language.name.capitalize}"]
+      language.add_phrases(language_key)
     end
 
   end
@@ -30,29 +30,5 @@ attr_accessor :name, :hello, :phrase, :translation
   def self.clear
     @@all.clear
   end
-
-  # def greeting
-  #   #scraper output
-  #   puts "I am a greeting"
-  # end
-  #
-  # def phrase
-  #   #scraper output
-  #   puts "I am a phrase"
-  # end
-  #
-  # def translation
-  #   #scraper output
-  #   puts "I am a translation"
-  # end
-
-  def self.scraper(input)
-      greetings = []
-      doc = Nokogiri::HTML(open("http://pocketcultures.com/2008/10/30/say-hello-in-20-languages/"))
-      # doc.search("p strong").each {|language| greetings << language}
-      #   doc.search("p strong").text.split(/(\d.)/)
-
-  end
-
 
 end
