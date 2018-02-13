@@ -18,7 +18,7 @@ class DailyPhrase::CLI
     preped_input
   end
 
-  def create_languages(input)
+  def create_languages(array)
     # array = input_prep(input).split(", ")
     array.each{|language| language = DailyPhrase::Language.new(language)}
     DailyPhrase::Language.add_attributes_to_languages
@@ -45,6 +45,7 @@ class DailyPhrase::CLI
       create_languages(array)
       puts "#{DailyPhrase::Phrases.phrases[input.capitalize.to_sym][:hello]} Let's see what people are saying in #{input.capitalize} today:"
       # input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
+
     else
       create_languages(array)
       new_array = array.collect{|language| language.name.capitalize}
@@ -53,8 +54,8 @@ class DailyPhrase::CLI
     end
 
     DailyPhrase::Language.all.each do |language|
-      language.phrase
-      language.translation
+      puts language.phrase
+      puts language.translation
     end
     DailyPhrase::Language.clear
     continue

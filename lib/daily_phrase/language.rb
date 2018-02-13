@@ -18,7 +18,9 @@ attr_accessor :name, :hello, :phrase, :translation
   end
 
   def add_phrases(phrases_hash)
-    phrases_hash.each {|key, value| self.send(("#{key}="), value)}
+    phrases_hash.each do |key, value|
+      self.send(("#{key}="), value)
+    end
   end
 
   def self.all
