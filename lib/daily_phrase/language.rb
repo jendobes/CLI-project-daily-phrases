@@ -5,7 +5,7 @@ attr_accessor :name, :greeting, :phrase, :translation
 
   def initialize(name)
     @name = name
-    @@all << self unless @@all.collect{|language| language.name}.include?(name)
+    @@all << self #unless @@all.collect{|language| language.name}.include?(name)
   end
 
   def self.all
@@ -14,6 +14,7 @@ attr_accessor :name, :greeting, :phrase, :translation
 
   def greeting
     #scraper output
+    puts "I am a greeting"
   end
 
   def phrase
