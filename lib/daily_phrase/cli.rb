@@ -42,17 +42,20 @@ class DailyPhrase::CLI
     if input == "all"
       puts "Here's what people around the world are saying today:"
       puts "All 15 language phrases"
+      DailyPhrase::Phrases.phrases.each {|key, value| DailyPhrase::Phrases.scraper(key)}
     elsif input == "list"
       list
     elsif input == "quit"
       exit
     elsif array.length == 1
       puts "#{DailyPhrase::Phrases.phrases[input.capitalize.to_sym][:hello]} Let's see what people are saying in #{input.capitalize} today:"
-      input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
+      # input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
+      DailyPhrase::Phrases.scraper(input)
     else
       new_array = array.collect{|language| language.capitalize}
       puts "#{DailyPhrase::Phrases.phrases[new_array.first.to_sym][:hello]} Let's see what people are saying in #{new_array[0...new_array.length-1].join(", ")} and #{new_array[new_array.length-1]} today:"
-      input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
+      # input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
+      array.each {|language| DailyPhrase::Phrases.scraper(language)}
     end
     continue
   end

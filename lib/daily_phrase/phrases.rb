@@ -30,17 +30,19 @@ attr_accessor :phrases
   }
 
   def self.scraper(input)
-    phrase_page = Nokogiri::HTML(open("https://www.transparent.com/word-of-the-day/today/#{input}.html"))
-    binding.pry
+    doc = Nokogiri::HTML(open("https://www.transparent.com/word-of-the-day/today/#{input}.html"))
+    # binding.pry
     # scrape lang_phrase
-    # @@phrases[input.capitalize.to_sym][lang_phrase:] = scrape output
-    phrase_page.css
+    lang_scrape = "Mi chiamo Jennifer" # scrape lang_phrase
+    @@phrases[input.capitalize.to_sym][:lang_phrase] = lang_scrape
+    # doc.css
     #
-    # scrape eng_phrase
-    # @@phrases[input.capitalize.to_sym][eng_phrase:] = scrape output
+    eng_scrape = "My name is Jennifer" # scrape eng_phrase
+    @@phrases[input.capitalize.to_sym][:eng_phrase] = eng_scrape
+
+    puts "#{@@phrases[input.capitalize.to_sym][:lang_phrase]} is #{input.capitalize} for #{@@phrases[input.capitalize.to_sym][:eng_phrase]}"
 
   end
-
 
 
 end
