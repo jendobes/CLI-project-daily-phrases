@@ -40,14 +40,19 @@ class DailyPhrase::CLI
   # array.each{|language| DailyPhrase::Phrases.phrases.include?(language)}
   # end
 
+  def input_prep(input)
+    input.include?(",") ? preped_input = input : preped_input = input.split(" ").join(", ")
+    preped_input
+  end
+
   def create_languages(input)
-    array = input.split(", ")
+    array = input_prep(input).split(", ")
     array.each{|language| language = DailyPhrase::Language.new(language)}
     DailyPhrase::Language.all
     # binding.pry
   end
 
-  def menu #currently unable to handle multiple language input that is not separated by a comma
+  def menu 
     greeting
     input = gets.strip
     create_languages(input)
