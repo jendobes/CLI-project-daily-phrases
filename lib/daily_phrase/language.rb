@@ -5,13 +5,26 @@ attr_accessor :name, :greeting, :phrase, :translation
 
   def initialize(name)
     @name = name
-    @@all << self
+    @@all << self unless @@all.collect{|language| language.name}.include?(name)
   end
 
   def self.all
     @@all
   end
 
+  def greeting
+    #scraper output
+  end
+
+  def phrase
+    #scraper output
+    puts "I am a phrase"
+  end
+
+  def translation
+    #scraper output
+    puts "I am a translation"
+  end
 
   def self.scraper(input)
       greetings = []

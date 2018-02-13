@@ -34,11 +34,15 @@ class DailyPhrase::CLI
     menu
   end
 
+  def create_languages(array)
+    array.each{|language| language = DailyPhrase::Language.new(language)}
+  end
+
   def menu #currently unable to handle multiple language input that is not separated by a comma
     greeting
     input = gets.strip
     array = input.split(", ")
-
+    create_languages(array)
     if input == "all"
       puts "Here's what people around the world are saying today:"
       puts "All 15 language phrases"
@@ -50,12 +54,13 @@ class DailyPhrase::CLI
     elsif array.length == 1
       puts "#{DailyPhrase::Phrases.phrases[input.capitalize.to_sym][:hello]} Let's see what people are saying in #{input.capitalize} today:"
       # input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
-      DailyPhrase::Phrases.scraper(input)
+      input.phrase
+      input.translation
     else
       new_array = array.collect{|language| language.capitalize}
       puts "#{DailyPhrase::Phrases.phrases[new_array.first.to_sym][:hello]} Let's see what people are saying in #{new_array[0...new_array.length-1].join(", ")} and #{new_array[new_array.length-1]} today:"
       # input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
-      array.each {|language| DailyPhrase::Phrases.scraper(language)}
+      array.each {|language| language.phrase language.translation}
     end
     continue
   end
