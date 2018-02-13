@@ -34,17 +34,24 @@ class DailyPhrase::CLI
     menu
   end
 
+  # def validate(input)
+  #   #validates that language is available
+  # array = input.split(", ")
+  # array.each{|language| DailyPhrase::Phrases.phrases.include?(language)}
+  # end
+
   def create_languages(input)
     array = input.split(", ")
     array.each{|language| language = DailyPhrase::Language.new(language)}
     DailyPhrase::Language.all
-    binding.pry
+    # binding.pry
   end
 
   def menu #currently unable to handle multiple language input that is not separated by a comma
     greeting
     input = gets.strip
     create_languages(input)
+
     if input == "all"
       puts "Here's what people around the world are saying today:"
       puts "All 15 language phrases"
@@ -56,14 +63,17 @@ class DailyPhrase::CLI
     elsif DailyPhrase::Language.all.length == 1
       puts "#{DailyPhrase::Phrases.phrases[input.capitalize.to_sym][:hello]} Let's see what people are saying in #{input.capitalize} today:"
       # input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
-      input.phrase
-      input.translation
     else
-      new_array = DailyPhrase::Language.all.collect{|language| language.capitalize}
+      new_array = DailyPhrase::Language.all.collect{|language| language.name.capitalize}
       puts "#{DailyPhrase::Phrases.phrases[new_array.first.to_sym][:hello]} Let's see what people are saying in #{new_array[0...new_array.length-1].join(", ")} and #{new_array[new_array.length-1]} today:"
       # input.split(", ").each{|language| puts "Phrase in #{language.capitalize}"}
-      array.each {|language| language.phrase language.translation}
     end
+
+    DailyPhrase::Language.all.each do |language|
+      language.phrase
+      language.translation
+    end
+    DailyPhrase::Language.clear
     continue
   end
 

@@ -12,6 +12,10 @@ attr_accessor :name, :greeting, :phrase, :translation
     @@all
   end
 
+  def self.clear
+    @@all.clear
+  end
+
   def greeting
     #scraper output
     puts "I am a greeting"
