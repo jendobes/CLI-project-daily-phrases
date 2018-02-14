@@ -5,7 +5,7 @@ attr_accessor :name, :hello, :phrase, :translation
 
   def initialize(name = nil)
     @name = name
-    @@all << self #unless @@all.collect{|language| language.name}.include?(name)
+    @@all << self 
   end
 
   def self.add_attributes_to_languages

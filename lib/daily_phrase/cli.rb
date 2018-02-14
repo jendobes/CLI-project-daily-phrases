@@ -67,11 +67,8 @@ class DailyPhrase::CLI
 
   def greeting
     puts "Please type in the languages for which you would like to see phrases."
-    # sleep(0.5)
     puts "~To see a complete list of available languages, type 'list'."
-    # sleep(1)
     puts "~If you would like to phrases in all 15 languages, type 'all'."
-    # sleep(1)
     puts "~To exit the program, type 'quit'."
   end
 
