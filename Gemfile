@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 require "nokogiri"
+require "watir"
 require "open-uri"
 require "pry"
 

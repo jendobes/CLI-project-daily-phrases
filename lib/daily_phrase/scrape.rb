@@ -24,6 +24,9 @@ attr_accessor :phrases
   }
 
   def self.scraper(input)
+    browser = Watir::Browser.new :chrome
+    browser.goto "https://www.transparent.com/word-of-the-day/today/#{input}.html"
+    binding.pry
     # # doc = Nokogiri::HTML(open("https://www.transparent.com/word-of-the-day/today/#{input}.html"))
     # doc = Nokogiri::HTML(open("https://wotd.transparent.com/widget/?lang=italian&_ga=2.29169532.1350800894.1518714813-137452791.1518714813"))
     # binding.pry
