@@ -5,13 +5,13 @@ attr_accessor :name, :hello, :phrase, :translation
 
   def initialize(name = nil)
     @name = name
-    @@all << self 
+    @@all << self
   end
 
   def self.add_attributes_to_languages
       @@all.each do |language|
-      DailyPhrase::Phrases.scrape(language.name)
-      language_key = DailyPhrase::Phrases.phrases[:"#{language.name.capitalize}"]
+      DailyPhrase::Scrape.scraper(language.name)
+      language_key = DailyPhrase::Scrape.phrases[:"#{language.name.capitalize}"]
       language.add_phrases(language_key)
     end
 

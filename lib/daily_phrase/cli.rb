@@ -3,7 +3,7 @@ class DailyPhrase::CLI
   attr_reader :offered_langs
 
   def initialize
-    @offered_langs = DailyPhrase::Phrases.phrases.collect{|key, value| key.to_s}
+    @offered_langs = DailyPhrase::Scrape.phrases.collect{|key, value| key.to_s}
   end
 
   def list

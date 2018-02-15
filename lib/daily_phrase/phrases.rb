@@ -1,4 +1,4 @@
-class DailyPhrase::Phrases
+class DailyPhrase::Scrape
 attr_accessor :phrases
 
   def self.phrases
@@ -23,7 +23,7 @@ attr_accessor :phrases
     :Japenese => {hello: "こんにちは (Kon'nichiwa)!"}
   }
 
-  def self.scrape(input)
+  def self.scraper(input)
     # doc = Nokogiri::HTML(open("https://www.transparent.com/word-of-the-day/today/#{input}.html"))
     doc = Nokogiri::HTML(open("https://wotd.transparent.com/widget/?lang=italian&_ga=2.29169532.1350800894.1518714813-137452791.1518714813"))
     binding.pry
