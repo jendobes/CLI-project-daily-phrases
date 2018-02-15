@@ -33,6 +33,8 @@ class DailyPhrase::CLI
   end
 
   def create_all_languages
+    @offered_langs.each{|language| language = DailyPhrase::Language.new(language)}
+    DailyPhrase::Language.add_attributes_to_languages
   end
 
 

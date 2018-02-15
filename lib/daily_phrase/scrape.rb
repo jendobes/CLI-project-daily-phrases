@@ -24,9 +24,9 @@ attr_accessor :phrases
   }
 
   def self.scraper(input)
-    # doc = Nokogiri::HTML(open("https://www.transparent.com/word-of-the-day/today/#{input}.html"))
-    doc = Nokogiri::HTML(open("https://wotd.transparent.com/widget/?lang=italian&_ga=2.29169532.1350800894.1518714813-137452791.1518714813"))
-    binding.pry
+    # # doc = Nokogiri::HTML(open("https://www.transparent.com/word-of-the-day/today/#{input}.html"))
+    # doc = Nokogiri::HTML(open("https://wotd.transparent.com/widget/?lang=italian&_ga=2.29169532.1350800894.1518714813-137452791.1518714813"))
+    # binding.pry
 
     phrase_scrape = "I am the phrase" #doc.css("p.js-wotd-fnphrase")
     translation_scrape = "I am the translation" #doc.css("p.js-wotd-enphrase")
