@@ -7,9 +7,10 @@ class DailyPhrase::CLI
   end
 
   def list
+    puts "-----------------------"
     puts "Here are all available languages:"
     @offered_langs.each{|language| puts language}
-    sleep(1.5)
+    sleep(0.5)
     menu
   end
 
@@ -41,7 +42,6 @@ class DailyPhrase::CLI
   def menu
     greeting
     input = gets.strip
-    # array = input_prep(input).split(", ")
 
     if input == "all"
       puts "Here's what people around the world are saying today:"
