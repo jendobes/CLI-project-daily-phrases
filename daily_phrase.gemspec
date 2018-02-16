@@ -6,6 +6,12 @@ require "nokogiri"
 require "watir"
 require "open-uri"
 require "pry"
+require "capybara"
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
 
 Gem::Specification.new do |spec|
   spec.name          = "daily_phrase"
@@ -29,6 +35,9 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
   end
+
+
+
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]

@@ -3,6 +3,7 @@ require "./lib/daily_phrase/cli"
 require "./lib/daily_phrase/scrape"
 require "./lib/daily_phrase/language"
 require "nokogiri"
+require "watir"
 require "open-uri"
 require "pry"
 module DailyPhrase

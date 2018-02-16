@@ -3,6 +3,8 @@ require "nokogiri"
 require "watir"
 require "open-uri"
 require "pry"
+gem 'capybara'
+gem "chromedriver-helper"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
