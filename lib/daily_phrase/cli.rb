@@ -63,6 +63,7 @@ class DailyPhrase::CLI
       puts language.hello
       puts "Let's see what people are saying in #{language.name.capitalize} today:"
       puts language.phrase
+      puts "In English, this means:"
       puts language.translation
       puts "-----------------------"
     end

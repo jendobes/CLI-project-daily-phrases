@@ -26,15 +26,13 @@ attr_accessor :phrases
   def self.scraper(input)
     browser = Watir::Browser.new :chrome
     browser.goto "https://www.transparent.com/word-of-the-day/today/#{input}.html"
-    binding.pry
     browser.driver.switch_to.frame(0)
-    # # doc = Nokogiri::HTML(open("https://www.transparent.com/word-of-the-day/today/#{input}.html"))
-    # doc = Nokogiri::HTML(open("https://wotd.transparent.com/widget/?lang=italian&_ga=2.29169532.1350800894.1518714813-137452791.1518714813"))
-    # binding.pry
+    doc = Nokogiri::HTML.parse(browser.html)
 
-    phrase_scrape = "I am the phrase" #doc.css("p.js-wotd-fnphrase")
-    translation_scrape = "I am the translation" #doc.css("p.js-wotd-enphrase")
-
+    phrase_scrape = doc.css("p.js-wotd-fnphrase").text
+    translation_scrape = doc.css("p.js-wotd-enphrase").text
+    browser.driver.quit
+    
     @@phrases[input.capitalize.to_sym][:phrase] = phrase_scrape
     @@phrases[input.capitalize.to_sym][:translation] = translation_scrape
   end
