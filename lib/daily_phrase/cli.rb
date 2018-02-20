@@ -7,7 +7,7 @@ class DailyPhrase::CLI
   end
 
   def list
-    puts "-----------------------"
+    puts "-----------------------".colorize(:cyan)
     puts "Here are all available languages:"
     @offered_langs.each{|language| puts language}
     sleep(0.5)
@@ -17,7 +17,7 @@ class DailyPhrase::CLI
   def validate(input)
     array = input_prep(input).collect{|language| language.capitalize}
     if !(array - @offered_langs).empty?
-      puts "-----------------------"
+      puts "-----------------------".colorize(:cyan)
       puts "Hmmm I didn't understand that.."
       menu
     end
@@ -45,12 +45,11 @@ class DailyPhrase::CLI
 
     if input == "all"
       puts "Here's what people around the world are saying today:"
-      puts "All 15 language phrases"
       create_all_languages
     elsif input == "list"
       list
     elsif input == "exit"
-      puts "-----------------------"
+      puts "-----------------------".colorize(:cyan)
       puts "Thanks for visiting us! Come back tomorrow for more phrases :)"
       exit
     else
@@ -58,14 +57,14 @@ class DailyPhrase::CLI
       create_languages(input)
     end
 
-      puts "-----------------------"
+      puts "-----------------------".colorize(:cyan)
       DailyPhrase::Language.all.each do |language|
       puts language.hello
       puts "Let's see what people are saying in #{language.name.capitalize} today:"
-      puts language.phrase
+      puts language.phrase.colorize(:magenta)
       puts "In English, this means:"
-      puts language.translation
-      puts "-----------------------"
+      puts language.translation.colorize(:blue)
+      puts "-----------------------".colorize(:cyan)
     end
 
     DailyPhrase::Language.clear
@@ -74,18 +73,18 @@ class DailyPhrase::CLI
 
 
   def call
-    puts "***Welcome to Daily Language Phrases!!!***"
+    puts "***Welcome to Daily Language Phrases!!!***".colorize( :background => :light_cyan)
     menu
   end
 
 
   def greeting
-    puts "-----------------------"
+    puts "-----------------------".colorize(:cyan)
     puts "Please type in the languages for which you would like to see phrases."
     puts "~To see a list of available languages, type 'list'."
     puts "~To see phrases in all 15 languages, type 'all'."
     puts "~To exit the program, type 'exit'."
-    puts "-----------------------"
+    puts "-----------------------".colorize(:cyan)
   end
 
 
@@ -98,7 +97,7 @@ class DailyPhrase::CLI
       puts "Thanks for visiting us! Come back tomorrow for more phrases :)"
       exit
     else
-      puts "-----------------------"
+      puts "-----------------------".colorize(:cyan)
       puts "Please type 'yes' or 'no'"
       continue
     end

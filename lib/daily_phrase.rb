@@ -6,6 +6,7 @@ require "nokogiri"
 require "watir"
 require "open-uri"
 require "pry"
+require "colorize"
 module DailyPhrase
 
 
