@@ -11,7 +11,7 @@ attr_accessor :phrases
     :Spanish => {hello: "¡Hola!"},
     :Italian => {hello: "Ciao!"},
     :Swedish => {hello: "Hallå!"},
-    :Portugese => {hello: "Olá!"},
+    :Portuguese => {hello: "Olá!"},
     :Dutch => {hello: "Hallo!"},
     :Norwegian => {hello: "Hallo!"},
     :Polish => {hello: "Witaj!"},
@@ -20,7 +20,7 @@ attr_accessor :phrases
     :Hindi => {hello: "नमस्कार (namaskaar)!"},
     :Russian => {hello: "Здравствуйте (Zdravstvuyte)!"},
     :Korean => {hello: "여보세요 (yeoboseyo)!"},
-    :Japenese => {hello: "こんにちは (Kon'nichiwa)!"}
+    :Japanese => {hello: "こんにちは (Kon'nichiwa)!"}
   }
 
   def self.scraper(input)
@@ -32,7 +32,7 @@ attr_accessor :phrases
     phrase_scrape = doc.css("p.js-wotd-fnphrase").text
     translation_scrape = doc.css("p.js-wotd-enphrase").text
     browser.driver.quit
-    
+
     @@phrases[input.capitalize.to_sym][:phrase] = phrase_scrape
     @@phrases[input.capitalize.to_sym][:translation] = translation_scrape
   end
