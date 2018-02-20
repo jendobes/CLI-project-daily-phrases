@@ -2,11 +2,6 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "daily_phrase/version"
-require "nokogiri"
-require "watir"
-require "open-uri"
-require "pry"
-require "capybara"
 
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, :browser => :chrome)
@@ -48,4 +43,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "nokogiri"
   spec.add_dependency "watir"
   spec.add_dependency "colorize"
+  spec.add_dependency "capybara"
+  spec.add_dependency "chromedriver-helper"
+
 end

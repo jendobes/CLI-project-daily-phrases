@@ -7,6 +7,9 @@ require "watir"
 require "open-uri"
 require "pry"
 require "colorize"
+gem 'capybara'
+gem "chromedriver-helper"
+
 module DailyPhrase
 
 
