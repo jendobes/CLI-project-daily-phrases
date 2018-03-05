@@ -9,7 +9,6 @@ require "pry"
 require "colorize"
 
 gem 'capybara'
-require 'capybara'
 gem "chromedriver-helper"
 
 module DailyPhrase

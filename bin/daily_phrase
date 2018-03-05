@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-require "./lib/daily_phrase"
 require "./lib/daily_phrase.rb"
 
 
