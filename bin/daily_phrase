@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require "./lib/daily_phrase.rb"
+require_relative "../lib/daily_phrase.rb"
 
 
 DailyPhrase::CLI.new.call
